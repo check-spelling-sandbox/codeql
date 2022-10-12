@@ -445,3 +445,4 @@ ignore$
 ^\Qswift/codegen/requirements.txt\E$
 ^\Qswift/ql/lib/swift.dbscheme.stats\E$
 ^\Qswift/ql/test/extractor-tests/generated/decl/IfConfigDecl/IfConfigDecl_getActiveElement.expected\E$
+NfaUtils
