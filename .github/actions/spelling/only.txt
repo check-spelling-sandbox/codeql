@@ -1,1 +1,10 @@
-\.qhelp$
+^cpp/
+^csharp/
+^swift/
+^docs/codeql-cli/
+^ORKSPACE\.bazel$
+^bazelversion$
+^bazelrc$
+^*/*\.bzl$
+^\.github/workflows/
+^\.github/workflows/swift-
