@@ -84,6 +84,9 @@ jobs:
           cspell:django/django.txt
           cspell:node/node.txt
           cspell:php/php.txt
+          cspell:cpp/src/lang-keywords.txt
+          cspell:cpp/src/stdlib-cpp.txt
+          cspell:cpp/src/compiler-msvc.txt
 
   comment-push:
     name: Report (Push)
