@@ -43,7 +43,9 @@
 
 # hit-count: 128 file-count: 57
 # Compiler flags
-(?:^|[\t ,"'`=(])-[DPWXYLlf](?=[A-Z]{2,}|[A-Z][a-z]|[a-z]{2,})
+(?:^|[\t ,"'`=(])-[DPWXYLf](?=[A-Z]{2,}|[A-Z][a-z]|[a-z]{2,})
+(?:^|[\t ,"'`=(])-ld(?=[A-Z]{2,}|[A-Z][a-z]|[a-z]{2,})
+(?:^|[\t ,"'`=(])-l(?!abeled|ang|egacy|ike)(?=[A-Z]{2,}|[A-Z][a-z]|[a-z]{2,})
 
 # hit-count: 120 file-count: 24
 # uuid:
@@ -220,6 +222,9 @@ rigtLeaves
 
 # branding violation quoted in article title
 \bdevarticles\.in/javascript.*Javascript
+
+# Control names?
+\[[a-zA-Z]{2}\][a-z]+
 
 # acceptable duplicates
 # ls directory listings
