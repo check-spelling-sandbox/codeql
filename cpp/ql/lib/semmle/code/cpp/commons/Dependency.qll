@@ -34,7 +34,7 @@ class DependsSource extends Element {
   DependsSource() {
     // not inside a template instantiation
     not exists(Element other | this.isFromTemplateInstantiation(other)) or
-    // allow DeclarationEntrys of template specializations
+    // allow DeclarationEntries of template specializations
     this.(DeclarationEntry).getDeclaration().(Function).isConstructedFrom(_) or
     this.(DeclarationEntry).getDeclaration().(Class).isConstructedFrom(_)
   }
@@ -51,7 +51,7 @@ class DependsSource extends Element {
  *    can only be inter-file dependencies in pathological cases.
  *  * Builtin functions and macros are excluded, as dependencies on them do not translate to inter-file dependencies (note that static functions
  *    and declarations within anonymous namespaces cannot be excluded for this reason, as the declaration can be in a header).
- *  * DeclarationEntrys are only needed if they're not definitions, for the definition to declaration dependency.
+ *  * DeclarationEntries are only needed if they're not definitions, for the definition to declaration dependency.
  */
 class Symbol extends DependsSource {
   Symbol() {
@@ -291,7 +291,7 @@ private predicate dependsOnDeclarationEntry(Element src, DeclarationEntry dest) 
 
 /**
  * The full dependsOn relation, made up of dependsOnTransitive plus some logic
- * to fix up the results for Declarations to most reasonable DeclarationEntrys.
+ * to fix up the results for Declarations to most reasonable DeclarationEntries.
  */
 private predicate dependsOnFull(DependsSource src, Symbol dest, int category) {
   // direct result
