@@ -75,12 +75,12 @@ where
   rator = c.getAMember() and
   rator.hasName(op) and
   forex(Operator aRator | aRator = c.getAMember() and aRator.hasName(op) |
-    not exists(Operator oprator |
-      oprator = c.getAMember() and
-      oprator.hasName(opp) and
+    not exists(Operator operator |
+      operator = c.getAMember() and
+      operator.hasName(opp) and
       (
-        implementedAsNegationOf(aRator, oprator) or
-        implementedAsNegationOf(oprator, aRator)
+        implementedAsNegationOf(aRator, operator) or
+        implementedAsNegationOf(operator, aRator)
       )
     )
   )
