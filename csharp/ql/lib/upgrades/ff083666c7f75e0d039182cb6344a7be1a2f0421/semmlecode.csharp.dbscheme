@@ -193,7 +193,7 @@ sourceLocationPrefix(
               | @destructor | @callable_accessor | @value_or_ref_type | @declaration_with_accessors
               | @local_function;
 
-/** LOCATIONS, ASEMMBLIES, MODULES, FILES and FOLDERS **/
+/** LOCATIONS, ASSEMBLIES, MODULES, FILES and FOLDERS **/
 
 @location = @location_default | @assembly;
 

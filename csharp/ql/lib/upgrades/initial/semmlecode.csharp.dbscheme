@@ -92,7 +92,7 @@ svnchurn(
          | @namespace_declaration | @using_directive | @attribute
          | @xmllocatable | @externalMetric | @externalDefect;
 
-/** LOCATIONS, ASEMMBLIES, MODULES, FILES and FOLDERS **/
+/** LOCATIONS, ASSEMBLIES, MODULES, FILES and FOLDERS **/
 
 @location = @location_default | @assembly;
 

@@ -229,7 +229,7 @@ tokens(
 @attributable = @assembly | @field | @parameter | @operator | @method | @constructor
               | @destructor | @callable_accessor | @value_or_ref_type | @declaration_with_accessors;
 
-/** LOCATIONS, ASEMMBLIES, MODULES, FILES and FOLDERS **/
+/** LOCATIONS, ASSEMBLIES, MODULES, FILES and FOLDERS **/
 
 @location = @location_default | @assembly;
 
