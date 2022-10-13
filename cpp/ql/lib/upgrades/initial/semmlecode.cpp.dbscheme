@@ -777,7 +777,7 @@ case @expr.kind of
 | 106 = @hastrivialconstr // __has_trivial_constructor ::= type
 | 107 = @hastrivialcopy // __has_trivial_copy ::= type
 | 108 = @hasuserdestr // __has_user_destructor ::= type
-| 109 = @hasvirtualdestr // __has_virtual_desctructor ::= type
+| 109 = @hasvirtualdestr // __has_virtual_destructor ::= type
 | 110 = @isabstractexpr // __is_abstract ::= type
 | 111 = @isbaseofexpr // __is_base_of ::= type type
 | 112 = @isclassexpr // __is_class ::= type
