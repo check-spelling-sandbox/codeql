@@ -1,10 +1,19 @@
+# @github/codeql-c-analysis
 ^cpp/
-^csharp/
+
+# @github/codeql-c
 ^swift/
-^docs/codeql-cli/
-^ORKSPACE\.bazel$
-^bazelversion$
-^bazelrc$
-^*/*\.bzl$
-^\.github/workflows/
 ^\.github/workflows/swift-
+
+# @github/codeql-csharp
+^csharp/
+
+# @github/codeql-cli-reviewers
+^docs/codeql-cli/
+
+# @github/codeql-ci-reviewers
+^WORKSPACE\.bazel$
+^\.bazelversion$
+^\.bazelrc$
+\.bzl$
+^\.github/workflows/
