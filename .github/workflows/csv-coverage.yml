@@ -1,11 +1,17 @@
 name: Build framework coverage reports
 
 on:
+  push:
+    paths:
+      - .github/workflows/csv-coverage.yml
   workflow_dispatch:
     inputs:
       qlModelShaOverride:
         description: "github/codeql repo SHA used for looking up the CSV models"
         required: false
+
+permissions:
+  contents: read
 
 jobs:
   build:

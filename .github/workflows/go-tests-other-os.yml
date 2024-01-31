@@ -1,5 +1,8 @@
 name: "Go: Run Tests - Other OS"
 on:
+  push:
+    paths:
+      - .github/workflows/go-tests-other-os.yml
   pull_request:
     paths:
       - "go/**"
@@ -7,8 +10,13 @@ on:
       - .github/workflows/go-tests-other-os.yml
       - .github/actions/**
       - codeql-workspace.yml
+
 env:
   GO_VERSION: '~1.21.0'
+
+permissions:
+  contents: read
+
 jobs:
   test-mac:
     name: Test MacOS

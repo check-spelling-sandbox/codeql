@@ -5,11 +5,17 @@ on:
     branches: [main]
     paths:
       - ql/ql/src/ql.dbscheme
+      - .github/workflows/ql-for-ql-dataset_measure.yml
   pull_request:
     branches: [main]
     paths:
       - ql/ql/src/ql.dbscheme
+      - .github/workflows/ql-for-ql-dataset_measure.yml
   workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: read
 
 jobs:
   measure:

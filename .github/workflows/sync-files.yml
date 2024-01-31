@@ -9,6 +9,10 @@ on:
     branches:
       - main
       - 'rc/*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   sync:

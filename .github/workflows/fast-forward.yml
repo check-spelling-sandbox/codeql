@@ -5,7 +5,13 @@
 # that is compatible with the latest stable release.
 name: Fast-forward tracking branch for selected CodeQL version
 on:
+  push:
+    paths:
+      - .github/workflows/fast-forward.yml
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   fast-forward:

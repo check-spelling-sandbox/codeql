@@ -1,7 +1,13 @@
 name: Build framework coverage timeseries reports
 
 on:
+  push:
+    paths:
+      - .github/workflows/csv-coverage-timeseries.yml
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:

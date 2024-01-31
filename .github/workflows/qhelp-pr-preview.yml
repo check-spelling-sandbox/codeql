@@ -22,12 +22,16 @@ permissions:
   pull-requests: read
 
 on:
+  push:
+    paths:
+      - .github/workflows/qhelp-pr-preview.yml
   pull_request:
     branches:
       - main
       - "rc/*"
     paths:
       - "**/*.qhelp"
+      - .github/workflows/qhelp-pr-preview.yml
 
 jobs:
   qhelp:
