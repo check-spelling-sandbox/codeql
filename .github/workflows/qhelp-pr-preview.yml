@@ -28,6 +28,10 @@ on:
       - "rc/*"
     paths:
       - "**/*.qhelp"
+      - .github/workflows/qhelp-pr-preview.yml
+  push:
+    paths:
+      - .github/workflows/qhelp-pr-preview.yml
 
 jobs:
   qhelp:

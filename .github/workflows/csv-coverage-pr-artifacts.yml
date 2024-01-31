@@ -18,6 +18,14 @@ on:
     branches:
       - main
       - "rc/*"
+  push:
+    paths:
+      - ".github/workflows/csv-coverage-pr-artifacts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
   generate:

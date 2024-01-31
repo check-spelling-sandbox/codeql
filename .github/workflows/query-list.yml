@@ -12,6 +12,10 @@ on:
       - '.github/workflows/query-list.yml'
       - '.github/actions/fetch-codeql/action.yml'
       - 'misc/scripts/generate-code-scanning-query-list.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:

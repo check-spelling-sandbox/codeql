@@ -20,10 +20,15 @@ on:
     branches:
       - main
       - "rc/*"
+  workflow_dispatch:
 
 defaults:
   run:
     working-directory: csharp
+
+permissions:
+  contents: read
+  security-events: read
 
 jobs:
   qlupgrade:
@@ -51,6 +56,9 @@ jobs:
       fail-fast: false
       matrix:
         slice: ["1/2", "2/2"]
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - uses: actions/checkout@v4
       - uses: ./csharp/actions/create-extractor-pack
