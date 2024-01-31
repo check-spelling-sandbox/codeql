@@ -25,6 +25,9 @@ defaults:
   run:
     working-directory: csharp
 
+permissions:
+  contents: read
+
 jobs:
   qlupgrade:
     runs-on: ubuntu-latest
@@ -52,6 +55,8 @@ jobs:
       fail-fast: false
       matrix:
         slice: ["1/2", "2/2"]
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: ./csharp/actions/create-extractor-pack
