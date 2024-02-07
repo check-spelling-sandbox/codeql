@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   stale:
-    if: github.repository == 'github/codeql'
+    if: github.repository == 'github/codeql' || vars.RUN_CLOSE_STALE
 
     runs-on: ubuntu-latest
 

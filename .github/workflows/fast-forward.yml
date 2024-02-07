@@ -8,6 +8,8 @@ on:
   push:
     paths:
       - .github/workflows/fast-forward.yml
+    branches:
+      - codeql-cli-*
   workflow_dispatch:
 
 permissions:
@@ -17,7 +19,7 @@ jobs:
   fast-forward:
     name: Fast-forward tracking branch for selected CodeQL version
     runs-on: ubuntu-latest
-    if: github.repository == 'github/codeql'
+    if: github.repository == 'github/codeql' || vars.RUN_FAST_FORWARD
     permissions:
       contents: write
     env:
