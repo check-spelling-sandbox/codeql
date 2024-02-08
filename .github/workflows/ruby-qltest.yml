@@ -2,25 +2,6 @@ name: "Ruby: Run QL Tests"
 
 on:
   push:
-    paths:
-      - "ruby/**"
-      - "shared/**"
-      - .github/workflows/ruby-build.yml
-      - .github/actions/fetch-codeql/action.yml
-      - codeql-workspace.yml
-    branches:
-      - main
-      - "rc/*"
-  pull_request:
-    paths:
-      - "ruby/**"
-      - "shared/**"
-      - .github/workflows/ruby-qltest.yml
-      - .github/actions/fetch-codeql/action.yml
-      - codeql-workspace.yml
-    branches:
-      - main
-      - "rc/*"
 
 env:
   CARGO_TERM_COLOR: always
