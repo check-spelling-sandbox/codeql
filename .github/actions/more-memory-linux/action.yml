@@ -1,0 +1,37 @@
+name: Make more memory available
+description: Stops services and adds swap
+
+runs:
+  using: composite
+  steps:
+    - name: Check Free
+      shell: bash
+      run: |
+        free > /tmp/free.0
+
+    - name: Stop services
+      shell: bash
+      run: |
+        sudo systemctl disable php8.1-fpm mono-xsp4 walinuxagent multipathd walinuxagent chrony cron getty@tty1 networkd-dispatcher rsyslog serial-getty@ttyS0 snapd multipathd.socket snapd.socket
+        sudo systemctl stop php8.1-fpm mono-xsp4 walinuxagent multipathd walinuxagent chrony cron getty@tty1 networkd-dispatcher rsyslog serial-getty@ttyS0 snapd
+        sudo killall mono
+
+    - name: enable swap
+      shell: bash
+      run: |
+        sudo fallocate -l 20G /mnt/big-swapfile
+        sudo chmod 600 /mnt/big-swapfile
+        sudo mkswap /mnt/big-swapfile
+        sudo swapon /mnt/big-swapfile
+
+    - name: Check Free
+      shell: bash
+      run: |
+        free > /tmp/free.1
+        (
+          echo '### Memory'
+          echo '```'
+          diff -u /tmp/free.0 /tmp/free.1 || true
+          echo '```'
+        ) >> "$GITHUB_STEP_SUMMARY"
+        rm /tmp/free.0 /tmp/free.1
