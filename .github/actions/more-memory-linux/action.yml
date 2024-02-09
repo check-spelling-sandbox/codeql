@@ -1,14 +1,22 @@
 name: Make more memory available
 description: Stops services and adds swap
 
+inputs:
+  max:
+    description: Maximum memory to suggest using
+    default: 50000
+
+outputs:
+  available:
+    description: Available memory
+    value: ${{ steps.memory.outputs.available }}
+  suggested:
+    description: Memory suggested for use (constrained by max and available)
+    value: ${{ steps.memory.outputs.suggested }}
+
 runs:
   using: composite
   steps:
-    - name: Check Free
-      shell: bash
-      run: |
-        free > /tmp/free.0
-
     - name: Stop services
       shell: bash
       run: |
@@ -19,19 +27,15 @@ runs:
     - name: enable swap
       shell: bash
       run: |
-        sudo fallocate -l 20G /mnt/big-swapfile
+        sudo fallocate -l 10G /mnt/big-swapfile
         sudo chmod 600 /mnt/big-swapfile
         sudo mkswap /mnt/big-swapfile
         sudo swapon /mnt/big-swapfile
 
-    - name: Check Free
+    - name: Report Free
+      id: memory
       shell: bash
+      env:
+        max: ${{ inputs.max }}
       run: |
-        free > /tmp/free.1
-        (
-          echo '### Memory'
-          echo '```'
-          diff -u /tmp/free.0 /tmp/free.1 || true
-          echo '```'
-        ) >> "$GITHUB_STEP_SUMMARY"
-        rm /tmp/free.0 /tmp/free.1
+        free | perl -ne 'next unless /Mem:.*\s(\d+)$/; my $m=$1; $m/=102400; $m=int($m)*100; my $max = $ENV{max} || $m; my $s = ($m < $max ? $m : $max); print "suggested=$s\n"."available=$m\n"' >> "$GITHUB_OUTPUT"
