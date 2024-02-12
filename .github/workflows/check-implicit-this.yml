@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - "**qlpack.yml"
+      - .github/workflows/check-implicit-this.yml
     branches:
       - main
       - "rc/*"
