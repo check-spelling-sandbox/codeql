@@ -17,10 +17,11 @@ jobs:
       fail-fast: false
       matrix:
         slice: ["1/2", "2/2"]
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
+      - name: Allocate memory
+        id: memory
+        uses: ./.github/actions/reasonable-memory
       - uses: ./csharp/actions/create-extractor-pack
       - name: Cache compilation cache
         id: query-cache
@@ -29,6 +30,7 @@ jobs:
           key: csharp-qltest-${{ matrix.slice }}
       - name: Run QL tests
         run: |
-          codeql test run --threads=0 --ram 50000 --slice ${{ matrix.slice }} --search-path extractor-pack --check-databases --check-undefined-labels --check-repeated-labels --check-redefined-labels --consistency-queries ql/consistency-queries ql/test --compilation-cache "${{ steps.query-cache.outputs.cache-dir }}"
+          codeql test run --threads=0 --ram $memory --slice ${{ matrix.slice }} --search-path extractor-pack --check-databases --check-undefined-labels --check-repeated-labels --check-redefined-labels --consistency-queries ql/consistency-queries ql/test --compilation-cache "${{ steps.query-cache.outputs.cache-dir }}"
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          memory: ${{ steps.memory.outputs.suggested }}
